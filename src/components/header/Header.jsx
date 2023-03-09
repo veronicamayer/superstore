@@ -14,7 +14,7 @@ const Header = (props) => {
             console.log(products.products)
             props.setProducts(products.products)
         });
-    },[])
+    })
 
     function onChangeHandler(e) {
         setSearchTerm(e.target.value)

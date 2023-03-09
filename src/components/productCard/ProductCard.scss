@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#productCard {
+  width: 190px;
+  font-size: 0.9rem;
+  display: block;
+  background-color: whitesmoke;
+  border-radius: 15px;
+  margin: 5px 10px;
+  padding: 10px 0;
+}
+#productCard .productImg {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 15px;
+  background-color: white;
+  display: block;
+  margin: auto;
+}
+.productCardLastImg .buttonImg {
+  width: 20px;
+}
+#productCard article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+}

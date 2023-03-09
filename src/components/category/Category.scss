@@ -1,8 +1,14 @@
+@font-face {
+    font-family: "Poppins SemiBold";
+    src: url(../../fonts/Poppins-SemiBold.ttf);
+}
+
 #category {
     img {
         width: 60px;
         height: 60px;
         padding: 10px;
+        margin-bottom: 10px;
         object-fit: contain;
         border-radius: 10px;
         box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -12,5 +18,8 @@
         width: 60px;
         overflow-wrap: break-word;
         hyphens: auto;
+        font-family: "Poppins SemiBold";
+        line-height: 0.9rem;
+        text-align: center;
     }
 }

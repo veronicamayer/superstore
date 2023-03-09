@@ -38,7 +38,7 @@ const Home = () => {
       </article>
       <div>
         <h2>Popular</h2>
-        <a href="">View all</a>
+        <a href="/">View all</a>
       </div>
       {products &&
         products.map((product) => {

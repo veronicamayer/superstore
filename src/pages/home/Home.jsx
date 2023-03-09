@@ -10,6 +10,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [showDetailslist, setShowDetailslist] = useState(false);
+    const [togglePopular, setTogglePopular] = useState(true);
 
     useEffect(() => {
         fetch("https://dummyjson.com/products/categories")
@@ -27,6 +28,33 @@ const Home = () => {
 
     }, []);
 
+    function handleViewAllClick(e) {
+      e.preventDefault();
+      fetch("https://dummyjson.com/products")
+        .then((res) => res.json())
+        .then((products) =>setProducts(products.products))
+        .catch((error) => console.error(error));
+        document.querySelector("div .popular h3").innerHTML = "All Products"
+        document.querySelector("div .popular a").innerHTML = "Popular"
+        setTogglePopular(!togglePopular)
+        console.log(togglePopular)
+
+    }
+    function handlePopularClick(e) {
+      e.preventDefault();
+      fetch("https://dummyjson.com/products?limit=10")
+        .then((res) => res.json())
+        .then((products) =>setProducts(products.products))
+        .catch((error) => console.error(error));
+        document.querySelector("div .popular h3").innerHTML = "Popular"
+        document.querySelector("div .popular a").innerHTML = "All Products"
+        setTogglePopular(!togglePopular)
+        console.log("test");
+
+
+    }
+
+
     return (
         <section id="home">
             {!showDetailslist && <h2>Find your favorite Product</h2>}
@@ -39,7 +67,13 @@ const Home = () => {
             </article>
             <div className="popular">
                 <h3>Popular</h3>
-                <a href="">View all</a>
+                <a href="" onClick={(e) => {
+                  if(togglePopular) {
+                    handleViewAllClick(e)
+                  }else {
+                    handlePopularClick(e)
+                  }
+                  }}>All Products</a>
             </div>
             <article className="allProducts">
             {products &&

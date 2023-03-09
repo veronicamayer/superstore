@@ -9,7 +9,7 @@ const Footer = (props) => {
     }
     return (
         <footer>
-            <a href="">
+            <a href="#home">
                 <img src={footerMenu} alt="Menu Button" />
             </a>
             

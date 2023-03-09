@@ -7,14 +7,7 @@ import "./Header.scss"
 const Header = (props) => {
     const [searchTerm, setSearchTerm] = useState("")
 
-    useEffect(() => {
-        fetch('https://dummyjson.com/products?limit=10')
-        .then(res => res.json())
-        .then(products => {
-            console.log(products.products)
-            props.setProducts(products.products)
-        });
-    },[])
+
 
     function onChangeHandler(e) {
         setSearchTerm(e.target.value)

@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import './Category.scss';
+import { Link } from "react-router-dom";
 
 /* images import */
 import smartphones from "../../images/smartphones.png";
@@ -91,8 +92,18 @@ const Category = (props) => {
             break;
     }
 
+    function handleOnCklick(e) {
+        fetch(`https://dummyjson.com/products/category/${props.category}`)
+        .then((res) => res.json())
+        .then((products) =>{
+            console.log(products);
+            props.setProducts(products.products)
+        })
+        .catch((error) => console.error(error));
+    }
+
     return (
-        <article key={uuidv4()} id="category">
+        <article key={uuidv4()} id="category" onClick={handleOnCklick}>
             <img src={imageSrc} alt="" />
             <p>{props.category}</p>
         </article>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PlusBottomImage from "../../images/plusButton.png";
+import Star from "../../images/Star.png";
 
 import "./ProductCard.scss";
 const ProductCard = (props) => {
@@ -11,7 +12,9 @@ const ProductCard = (props) => {
         </div>
         <div>
           <p>
-            <span>⭐️</span>
+            <span>
+              <img className="starImg" src={Star} alt="star.png" />
+            </span>
             {props.product.rating}
           </p>
           <article id="flexDetailsUndPreis">

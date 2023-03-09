@@ -1,0 +1,29 @@
+
+
+section#header {
+    box-sizing: border-box;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    input {
+        background-color: #F0F3F8;
+        line-height: 3rem;
+        border-radius: 15px;
+        border: none;
+        width: 90%;
+        &:focus {
+            /* border-color: #364FD4; */
+            border: 2px solid #364FD4;
+            outline: none;
+        }
+    }
+    a {
+        text-decoration: none;
+        background-color: #364FD4;
+        padding: 15px;
+        border-radius: 15px;
+        margin-left: 10px;
+    }
+}

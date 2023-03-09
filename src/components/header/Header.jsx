@@ -2,6 +2,8 @@ import filterMenueImg from "../../images/filterMenu.png"
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import "./Header.scss"
+
 const Header = (props) => {
     const [searchTerm, setSearchTerm] = useState("")
 
@@ -34,14 +36,12 @@ const Header = (props) => {
     }
 
     return ( 
-        <>
+        <section id="header">
             <input type="text" value={searchTerm} onChange={onChangeHandler}/>
             <Link to={"/filter"}>
                 <img src="" alt="" /><img src={filterMenueImg} alt="" />
             </Link>
-            
-        </>
-        
+        </section>
      );
 }
  

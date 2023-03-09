@@ -13,7 +13,7 @@ const Home = () => {
         <h2>
           Find your favorite Product
         </h2>
-        <Header/>
+        <Header setProducts={setProducts}/>
         {categories && categories.map(category => {return (
           <Category/>
         )})}

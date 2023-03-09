@@ -1,0 +1,19 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 12vh;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 3vh 5vw;
+    
+
+    img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+}

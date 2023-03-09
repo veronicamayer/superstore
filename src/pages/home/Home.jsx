@@ -4,6 +4,8 @@ import ProductCard from "../../components/productCard/ProductCard";
 import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
 
+import './Home.scss';
+
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);

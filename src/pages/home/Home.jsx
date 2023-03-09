@@ -9,6 +9,7 @@ import "./Home.scss";
 const Home = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [showDetailslist, setShowDetailslist] = useState(false);
 
     useEffect(() => {
         fetch("https://dummyjson.com/products/categories")
@@ -28,10 +29,10 @@ const Home = () => {
 
     return (
         <section id="home">
-            <h2>Find your favorite Product</h2>
-            <Header setProducts={setProducts} />
+            {!showDetailslist && <h2>Find your favorite Product</h2>}
+            <Header setProducts={setProducts} setShowDetailslist={setShowDetailslist}/>
             <article className="allCategories">
-                {categories &&
+                {!showDetailslist && categories &&
                     categories.map((category) => {
                         return <Category category={category} setProducts={setProducts}/>;
                     })}
@@ -46,7 +47,7 @@ const Home = () => {
                     return <ProductCard product={product} />;
                 })}
                 </article>
-            <Footer />
+            <Footer/>
         </section>
     );
 

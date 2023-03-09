@@ -17,13 +17,13 @@ const Home = () => {
             .catch((error) => console.error(error));
     }, []);
 
+
     useEffect(() => {
-        fetch("https://dummyjson.com/products?limit=10")
-            .then((res) => res.json())
-            .then((products) => {
-                console.log(products.products);
-                setProducts(products.products);
-            });
+      fetch("https://dummyjson.com/products?limit=10")
+        .then((res) => res.json())
+        .then((products) =>setProducts(products.products))
+        .catch((error) => console.error(error));
+
     }, []);
 
     return (
@@ -33,7 +33,7 @@ const Home = () => {
             <article className="allCategories">
                 {categories &&
                     categories.map((category) => {
-                        return <Category category={category} />;
+                        return <Category category={category} setProducts={setProducts}/>;
                     })}
             </article>
             <div className="popular">
@@ -49,6 +49,7 @@ const Home = () => {
             <Footer />
         </section>
     );
+
 };
 
 export default Home;

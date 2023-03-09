@@ -1,0 +1,10 @@
+#allCategories {
+    display: flex;
+    overflow-x: scroll;
+    padding: 3vh 3vw;
+    gap: 25px;
+}
+
+#allCategories::-webkit-scrollbar {
+    display: none;
+}

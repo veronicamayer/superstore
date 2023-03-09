@@ -9,6 +9,13 @@ const Home = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+        fetch("https://dummyjson.com/products/categories")
+            .then((response) => response.json())
+            .then((data) => setCategories(data))
+            .catch((error) => console.error(error));
+    }, []);
+    
+  useEffect(() => {
     fetch("https://dummyjson.com/products?limit=10")
       .then((res) => res.json())
       .then((products) => {
@@ -16,14 +23,17 @@ const Home = () => {
         setProducts(products.products);
       });
   }, []);
+  
   return (
     <section>
       <h2>Find your favorite Product</h2>
       <Header setProducts={setProducts} />
-      {categories &&
-        categories.map((category) => {
-          return <Category />;
-        })}
+      <article id="allCategories">
+          {categories &&
+              categories.map((category) => {
+                  return <Category category={category} />;
+              })}
+      </article>
       <div>
         <h2>Popular</h2>
         <a href="">View all</a>

@@ -37,7 +37,7 @@ const Header = (props) => {
 
     return ( 
         <section id="header">
-            <input type="text" value={searchTerm} onChange={onChangeHandler}/>
+            <input type="text" placeholder="search" value={searchTerm} onChange={onChangeHandler}/>
             <Link to={"/filter"}>
                 <img src="" alt="" /><img src={filterMenueImg} alt="" />
             </Link>

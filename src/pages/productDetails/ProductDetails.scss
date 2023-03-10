@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.ganzeSectionBGD {
+  background-color: whitesmoke;
+}
+.headerProductDetails {
+  text-align: center;
+  display: inline;
+}
+.headerProductDetails img {
+  position: absolute;
+  top: 33px;
+}
+.headerProductDetails p {
+  padding: 5vh 0;
+  font-weight: bold;
+}
+.productCardDetails {
+  width: 345px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px 15px 0 0px;
+}
+.productCardDetails .imgProductDetails {
+  width: 345px;
+
+  padding: 0 15px;
+}
+.imgProductDetails {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+}
+.productNameRate {
+  padding: 15px 0 15px 15px;
+}
+.productNameRate h3 {
+  padding-bottom: 5px;
+}
+.productNameRate p {
+  font-size: 0.75rem;
+}
+.starImg {
+  padding: 0 5px 0 0;
+}
+.productStock {
+  opacity: 0.4;
+  font-size: 0.8rem;
+}
+.productPrice {
+  font-size: 1.2rem;
+  color: blue;
+  font-weight: bold;
+}
+
+.flexProductStockPreis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 4vw;
+  padding-bottom: 10px;
+}
+.description {
+  margin-top: 3vh;
+  width: 345px;
+  margin: 0 auto;
+}
+.descriptionP {
+  padding: 8px 0 10px 5px;
+  font-weight: bold;
+}
+.descriptionPLast {
+  padding-left: 5px;
+  opacity: 0.5;
+  font-size: 0.85rem;
+}
+.buttonAddToCard {
+  display: block;
+  margin: 15vh auto 15vh auto;
+  border: 1px solid blue;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  width: 345px;
+  padding: 15px 0;
+}

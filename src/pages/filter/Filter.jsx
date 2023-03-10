@@ -34,9 +34,8 @@ const Filter = () => {
             
         })
         .then(() => {
-            products = filterBrands(products)
-            products = filterPriceSpan(products)
-            setProducts(products)
+            setProducts(filterBrands(products))
+            setProducts(filterPriceSpan(products))
             navigate("/",{ state: {products: products}});
         })
 

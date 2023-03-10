@@ -120,7 +120,7 @@ const Home = () => {
           products.map((product) => {
             return (
               <Link to={`/productDetails/${product.id}`}>
-                <ProductCard product={product} />;
+                <ProductCard product={product} />
               </Link>
             );
           })}

@@ -1,6 +1,6 @@
 const FilterItem = (props) => {
   return (
-    <div>
+    <div className={props.className}>
       <input type="checkbox" name={props.category} id="" />
       <label htmlFor="">{props.category}</label>
     </div>

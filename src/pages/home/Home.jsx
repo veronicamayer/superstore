@@ -23,6 +23,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    if (state) return setProducts(state.products)
     fetch("https://dummyjson.com/products?limit=10")
       .then((res) => res.json())
       .then((products) => {

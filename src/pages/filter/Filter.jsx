@@ -6,7 +6,7 @@ import "./Filter.scss";
 const Filter = () => {
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState(["Apple","Nike","adidas","Lenovo","Sony","Nescafé","Dior","Lego","Braun","L'Oreal","Zara"]);
-  const [products, setProducts] = useState([]);
+  let [products, setProducts] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     fetch("https://dummyjson.com/products/categories")
@@ -15,7 +15,7 @@ const Filter = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  function handleApllyFilter(e) {
+  async function handleApllyFilter(e) {
     const categoiesCheckedUrls = []
     
     document.querySelectorAll("div .category input[type=checkbox]").forEach((input)=>{
@@ -23,6 +23,7 @@ const Filter = () => {
             return categoiesCheckedUrls.push(`https://dummyjson.com/products/category/${input.name}`); 
         }
     })
+    if( categoiesCheckedUrls.length === 0) categoiesCheckedUrls.push("https://dummyjson.com/products?limit=100");
     
     fetchProductsFromCheckedCategories(categoiesCheckedUrls)
     .then((productsPromises) => {
@@ -34,8 +35,12 @@ const Filter = () => {
             
         })
         .then(() => {
-            setProducts(filterBrands(products))
-            setProducts(filterPriceSpan(products))
+            console.log(products);
+            products = filterBrands(products)
+            console.log(filterBrands(products));
+            console.log(products)
+            products = filterPriceSpan(products)
+            setProducts(products)
             navigate("/",{ state: {products: products}});
         })
 
@@ -58,12 +63,12 @@ const Filter = () => {
     const brandsChecked = []
     document.querySelectorAll("div .brand input[type=checkbox]").forEach((input)=>{
         if (input.checked) {
-            return brandsChecked.push(`input.name`); 
+            return brandsChecked.push(input.name); 
         }
     })
-    
-
-    return products
+    console.log(brandsChecked)
+    if (brandsChecked.length === 0) return products
+    return products.filter((product) => brandsChecked.includes(product.brand))
   }
   function filterPriceSpan(products) {
 

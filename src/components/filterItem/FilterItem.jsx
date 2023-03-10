@@ -1,8 +1,11 @@
+import './FilterItem.scss';
+
 const FilterItem = (props) => {
   return (
-    <div className={props.className}>
-      <input type="checkbox" name={props.category} id="" />
-      <label htmlFor="">{props.category}</label>
+
+    <div id="filterItem" className={props.className}>
+      <input type="checkbox" name={props.category} id={props.category} />
+      <label htmlFor={props.category}> {props.category}</label>
     </div>
   );
 };

@@ -1,0 +1,17 @@
+#filterItem {
+    input[type="checkbox"] {
+        visibility: hidden;
+    }
+
+    input[type="checkbox"]:checked + label {
+        background-color: #3747bd;
+        color: white;
+    }
+
+    label {
+        padding: 8px 10px;
+        border-radius: 10px;
+        color: #676d79;
+        text-transform: capitalize;
+    }
+}

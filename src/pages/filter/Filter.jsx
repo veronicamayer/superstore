@@ -16,17 +16,13 @@ const Filter = () => {
 
   function handleApllyFilter(e) {
     const categoiesCheckedUrls = []
-    const brandsChecked = []
+    
     document.querySelectorAll("div .category input[type=checkbox]").forEach((input)=>{
         if (input.checked) {
             return categoiesCheckedUrls.push(`https://dummyjson.com/products/category/${input.name}`); 
         }
     })
-    document.querySelectorAll("div .brand input[type=checkbox]").forEach((input)=>{
-        if (input.checked) {
-            return categoiesCheckedUrls.push(`input.name`); 
-        }
-    })
+    
     fetchProductsFromCheckedCategories(categoiesCheckedUrls)
     .then((productsPromises) => {
         Promise.all(productsPromises).then((fetchedProducts) => {
@@ -37,6 +33,9 @@ const Filter = () => {
             
         })
         .then(() => {
+            products = filterBrands(products)
+            products = filterPriceSpan(products)
+            setProducts(products)
             navigate("/",{ state: {products: products}});
         })
 
@@ -53,6 +52,22 @@ const Filter = () => {
         .then((response) => response.json())
     })
     return productsPromises
+  }
+
+  function filterBrands(products) {
+    const brandsChecked = []
+    document.querySelectorAll("div .brand input[type=checkbox]").forEach((input)=>{
+        if (input.checked) {
+            return brandsChecked.push(`input.name`); 
+        }
+    })
+    
+
+    return products
+  }
+  function filterPriceSpan(products) {
+
+    return products
   }
 
   return (

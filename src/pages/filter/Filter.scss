@@ -23,7 +23,7 @@
         margin: 7px 2vw 7px 0;
     }
 
-    #categories {
+    #categories, #brands {
         display: flex;
         flex-wrap: wrap;
     }
@@ -34,6 +34,18 @@
         padding: 8px 10px;
         width: 30vw;
         color: #676d79;
+    }
+
+    input[type="button"] {
+        background-color: #3747bd;
+        color: white;
+        padding: 15px 0;
+        width: 90vw;
+        display: block;
+        margin: auto;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
     }
 
 }

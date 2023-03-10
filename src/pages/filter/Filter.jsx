@@ -7,6 +7,10 @@ const Filter = () => {
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState(["Apple","Nike","adidas","Lenovo","Sony","Nescafé","Dior","Lego","Braun","L'Oreal","Zara"]);
   let [products, setProducts] = useState([]);
+
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+
   const navigate = useNavigate();
   useEffect(() => {
     fetch("https://dummyjson.com/products/categories")
@@ -35,10 +39,7 @@ const Filter = () => {
             
         })
         .then(() => {
-            console.log(products);
             products = filterBrands(products)
-            console.log(filterBrands(products));
-            console.log(products)
             products = filterPriceSpan(products)
             setProducts(products)
             navigate("/",{ state: {products: products}});
@@ -70,9 +71,29 @@ const Filter = () => {
     if (brandsChecked.length === 0) return products
     return products.filter((product) => brandsChecked.includes(product.brand))
   }
-  function filterPriceSpan(products) {
 
-    return products
+  function filterPriceSpan(products) {
+    console.log(minPrice);
+    console.log(maxPrice);
+    console.log(products);
+
+    const filteredProducts = products.filter(product => {
+    const price = parseFloat(product.price);
+    if (!isNaN(price)) {
+      if (minPrice !== '' && price < parseFloat(minPrice)) {
+        return false;
+      }
+      if (maxPrice !== '' && price > parseFloat(maxPrice)) {
+        return false;
+      }
+      return true;
+    }
+    return false;
+  });
+  console.log(filteredProducts);
+
+  setProducts(filteredProducts);
+  return filteredProducts;
   }
 
   return (
@@ -95,13 +116,13 @@ const Filter = () => {
       <article>
         <h3>Price</h3>
         <div>
-          <input type="number" placeholder="0" name="" id="" step={"any"} /> $<span> - </span>
-          <input type="number" placeholder="100" name="" id="" step={"any"} /> $
+          <input type="number" placeholder="0" name="min-price" id="min-price" value={minPrice} step={"any"} onChange={event => setMinPrice(event.target.value)}/> $<span> - </span>
+          <input type="number" placeholder="100" name="max-price" id="max-price" value={maxPrice} step={"any"} onChange={event => setMaxPrice(event.target.value)}/> $
         </div>
       </article>
       <article>
         <h3>Brands</h3>
-        <div>
+        <div id="brands">
             {brands &&
             brands.map((brands) => {
                 return <FilterItem className="brand" category={brands} />;

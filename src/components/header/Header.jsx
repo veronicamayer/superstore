@@ -1,6 +1,6 @@
 import filterMenueImg from "../../images/filterMenu.png"
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import "./Header.scss"
 
@@ -40,7 +40,7 @@ const Header = (props) => {
                 <img src="" alt="" /><img src={filterMenueImg} alt="" />
             </Link>
         </section>
-     );
+    );
 }
  
 export default Header;

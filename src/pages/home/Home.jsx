@@ -20,6 +20,7 @@ const Home = () => {
     }, []);
 
 
+
     useEffect(() => {
       fetch("https://dummyjson.com/products?limit=10")
         .then((res) => res.json())
@@ -67,7 +68,7 @@ const Home = () => {
             </article>
             <div className="popular">
                 <h3>Popular</h3>
-                <a href="" onClick={(e) => {
+                <a href="/" onClick={(e) => {
                   if(togglePopular) {
                     handleViewAllClick(e)
                   }else {

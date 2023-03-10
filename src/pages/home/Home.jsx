@@ -30,7 +30,7 @@ const Home = () => {
 
     function handleViewAllClick(e) {
       e.preventDefault();
-      fetch("https://dummyjson.com/products")
+      fetch("https://dummyjson.com/products?limit=100")
         .then((res) => res.json())
         .then((products) =>setProducts(products.products))
         .catch((error) => console.error(error));

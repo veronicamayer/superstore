@@ -3,6 +3,7 @@ import Category from "../../components/category/Category";
 import ProductCard from "../../components/productCard/ProductCard";
 import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import "./Home.scss";
 
@@ -11,6 +12,7 @@ const Home = () => {
     const [categories, setCategories] = useState([]);
     const [showDetailslist, setShowDetailslist] = useState(false);
     const [togglePopular, setTogglePopular] = useState(true);
+    let { state } = useLocation();
 
     useEffect(() => {
         fetch("https://dummyjson.com/products/categories")
@@ -22,6 +24,7 @@ const Home = () => {
 
 
     useEffect(() => {
+      if(state) return setProducts(state.products)
       fetch("https://dummyjson.com/products?limit=10")
         .then((res) => res.json())
         .then((products) =>setProducts(products.products))

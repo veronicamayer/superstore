@@ -31,37 +31,7 @@ const Home = () => {
         return setProducts(products.products);
       })
       .catch((error) => console.error(error));
-  }, []);
-
-  function handleViewAllClick(e) {
-    e.preventDefault();
-    fetch("https://dummyjson.com/products?limit=100")
-      .then((res) => res.json())
-      .then((products) => setProducts(products.products))
-      .catch((error) => console.error(error));
-    document.querySelector("div .popular h3").innerHTML = "All Products";
-    document.querySelector("div .popular a").innerHTML = "Popular";
-    setTogglePopular(!togglePopular);
-    console.log(togglePopular);
-  }
-  function handlePopularClick(e) {
-    e.preventDefault();
-    fetch("https://dummyjson.com/products?limit=10")
-      .then((res) => res.json())
-      .then((products) => setProducts(products.products))
-      .catch((error) => console.error(error));
-    document.querySelector("div .popular h3").innerHTML = "Popular";
-    document.querySelector("div .popular a").innerHTML = "All Products";
-    setTogglePopular(!togglePopular);
-    console.log("test");
-  }
-  useEffect(() => {
-    if (state) return setProducts(state.products);
-    fetch("https://dummyjson.com/products?limit=10")
-      .then((res) => res.json())
-      .then((products) => setProducts(products.products))
-      .catch((error) => console.error(error));
-  }, []);
+  }, [state]);
 
   function handleViewAllClick(e) {
     e.preventDefault();

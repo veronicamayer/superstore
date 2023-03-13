@@ -5,11 +5,10 @@ import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import * as React from 'react';
+import * as React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import "./Home.scss";
-
 
 const useLocalStorage = (storageKey, fallbackState) => {
   const [value, setValue] = React.useState(
@@ -18,8 +17,6 @@ const useLocalStorage = (storageKey, fallbackState) => {
 
   React.useEffect(() => {
     window.sessionStorage.setItem(storageKey, JSON.stringify(value));
-    
-    
   }, [value, storageKey]);
 
   return [value, setValue];
@@ -41,24 +38,19 @@ const Home = () => {
 
   useEffect(() => {
     if (state) {
-      setProducts(state.products)
-      return
-    } 
-    if(products.length === 0){
+      setProducts(state.products);
+      return;
+    }
+    if (products.length === 0) {
       fetch("https://dummyjson.com/products?limit=10")
-      .then((res) => res.json())
-      .then((products) => {
-        console.log(products);
-        return setProducts(products.products);
-      })
-      .catch((error) => console.error(error));
-
+        .then((res) => res.json())
+        .then((products) => {
+          console.log(products);
+          return setProducts(products.products);
+        })
+        .catch((error) => console.error(error));
     }
   }, [state]);
-
-
-    
-
 
   function handleViewAllClick(e) {
     e.preventDefault();
@@ -101,40 +93,47 @@ const Home = () => {
         {!showDetailslist &&
           categories &&
           categories.map((category) => {
-            return <Category key={uuidv4()} category={category} setProducts={setProducts} />;
+            return (
+              <Category
+                key={uuidv4()}
+                category={category}
+                setProducts={setProducts}
+              />
+            );
           })}
       </article>
 
       {showDetailslist && (
-        <div>
+        <div className="showDetailslist">
           <p>Sort by:</p>
           <a href="/home" onClick={handleSortByLowestPrice}>
             Lowest Price
           </a>
         </div>
       )}
-      {!showDetailslist && 
-      <div className="popular">
-        <h3>Popular</h3>
-        <a
-          href="/home"
-          onClick={(e) => {
-            if (togglePopular) {
-              handleViewAllClick(e);
-            } else {
-              handlePopularClick(e);
-            }
-          }}
-        >
-          All Products
-        </a>
-      </div>}
+      {!showDetailslist && (
+        <div className="popular">
+          <h3>Popular</h3>
+          <a
+            href="/home"
+            onClick={(e) => {
+              if (togglePopular) {
+                handleViewAllClick(e);
+              } else {
+                handlePopularClick(e);
+              }
+            }}
+          >
+            All Products
+          </a>
+        </div>
+      )}
       <article className="allProducts">
         {products &&
           products.map((product) => {
             return (
               <Link key={uuidv4()} to={`/productDetails/${product.id}`}>
-                <ProductCard  key={uuidv4()} product={product} />
+                <ProductCard key={uuidv4()} product={product} />
               </Link>
             );
           })}

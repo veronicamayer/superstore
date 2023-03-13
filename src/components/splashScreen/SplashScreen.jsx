@@ -6,6 +6,8 @@ const SplashScreen = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
+            document.getElementById("splashScreen").classList.remove("overlay");
+
         }, 1000);
 
         return () => {

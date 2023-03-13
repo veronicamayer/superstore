@@ -5,7 +5,7 @@ import { Link, useNavigate} from "react-router-dom";
 import "./Filter.scss";
 const Filter = () => {
   const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState(["Apple","Nike","adidas","Lenovo","Sony","Nescafé","Dior","Lego","Braun","L'Oreal","Zara"]);
+  const [brands] = useState(["Apple","Nike","adidas","Lenovo","Sony","Nescafé","Dior","Lego","Braun","L'Oreal","Zara"]);
   let [products, setProducts] = useState([]);
 
   const [minPrice, setMinPrice] = useState('');

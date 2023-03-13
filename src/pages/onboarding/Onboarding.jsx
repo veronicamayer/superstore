@@ -18,8 +18,8 @@ const Onboarding = () => {
             return setProducts(products.products);
           })
           .catch((error) => console.error(error));
-    
-        
+
+
       }, []);
 
 

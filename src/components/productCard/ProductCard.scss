@@ -5,6 +5,7 @@
 }
 #productCard {
   width: 170px;
+  height: 240px;
   font-size: 0.9rem;
   display: block;
   background-color: whitesmoke;
@@ -12,6 +13,10 @@
   margin: 5px 10px;
   padding: 10px 0;
   /* box-shadow: 0 0 10px 1px gray; */
+
+  .reviews {
+    padding: 1vh 0 0 4vw;
+  }
 }
 #productCard a {
   text-decoration: none;

@@ -5,7 +5,7 @@ import { Link, useNavigate} from "react-router-dom";
 import "./Filter.scss";
 const Filter = () => {
   const [categories, setCategories] = useState([]);
-  const [brands] = useState(["Apple","Nike","adidas","Lenovo","Sony","Nescafé","Dior","Lego","Braun","L'Oreal","Zara"]);
+  const [brands] = useState(["Apple","Samsung","OPPO","Huawei","Microsoft Surface","HP Pavilion","Al Munakh","L'Oreal Paris","Hemani Tea","Dermive","Baking Food Items","fauji","Flying Wooden"]);
   let [products, setProducts] = useState([]);
 
   const [minPrice, setMinPrice] = useState('');
@@ -42,7 +42,7 @@ const Filter = () => {
             products = filterBrands(products)
             products = filterPriceSpan(products)
             setProducts(products)
-            navigate("/",{ state: {products: products}});
+            navigate("/home",{ state: {products: products}});
         })
 
          
@@ -99,7 +99,7 @@ const Filter = () => {
   return (
     <section id="filter">
       <div>
-        <Link to="/">
+        <Link to="/home">
           <img src={zurückButton} alt="zurückButton.png" />
         </Link>
         <h2>Filters</h2>

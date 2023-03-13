@@ -99,7 +99,6 @@ const Category = (props) => {
             props.setProducts(products.products)
         })
         .catch((error) => console.error(error));
-        props.handleLinkClick()
     }
 
     return (

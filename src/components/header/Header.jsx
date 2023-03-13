@@ -36,7 +36,7 @@ const Header = (props) => {
     return ( 
         <section id="header">
             <input id="searchInput" type="text" placeholder="search" value={searchTerm} onChange={onChangeHandler}/>
-            <Link to={"/filter"} onClick={props.handleLinkClick}>
+            <Link to={"/filter"}>
                 <img src="" alt="" /><img src={filterMenueImg} alt="" />
             </Link>
         </section>

@@ -1,14 +1,11 @@
 import "./Footer.scss";
-import { useLocation } from "react-router-dom";
 
 import footerMenu from '../../images/footerMenu.png'
 import footerSearch from '../../images/footerSearch.png'
 
 const Footer = (props) => {
-    let location = useLocation();
     function handleClick(e) {
-        console.log(location);
-        document.getElementById("searchInput").focus()
+            document.getElementById("searchInput").focus()
     }
     return (
         <footer>

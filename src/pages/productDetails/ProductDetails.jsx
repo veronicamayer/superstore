@@ -13,14 +13,14 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((products) => setProducts(products))
       .catch((error) => console.error(error));
-  }, []);
+  }, [params.productId]);
 
   return (
     <section className="ganzeSectionBGD">
       {products.images && (
         <div>
           <div className="headerProductDetails">
-            <Link to="/">
+            <Link to="/home">
               <img src={zurückButton} alt="zurückButton.png" />
             </Link>
             <p>{products.title}</p>

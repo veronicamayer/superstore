@@ -1,0 +1,24 @@
+#splashScreen {
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    transition: 0.5s ease-in;
+    background-color: #010c80;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        margin-top: 30vh;
+    }
+}
+
+#splashScreen.overlay {
+    opacity: 1;
+    z-index: 1;
+}
+

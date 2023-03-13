@@ -40,10 +40,10 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (state) {
+    if (state && state.products.length > 0){
       setProducts(state.products)
       return
-    } 
+    } else {
     if(products.length === 0){
       fetch("https://dummyjson.com/products?limit=10")
       .then((res) => res.json())
@@ -53,8 +53,8 @@ const Home = () => {
       })
       .catch((error) => console.error(error));
 
-    }
-  }, [state, setProducts, products.length]);
+    } 
+  }}, [state, setProducts, products.length]);
 
   function handleViewAllClick(e) {
     e.preventDefault();

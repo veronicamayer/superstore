@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import * as React from 'react';
+import { v4 as uuidv4 } from "uuid";
 
 import "./Home.scss";
 
@@ -25,7 +26,7 @@ const useLocalStorage = (storageKey, fallbackState) => {
 };
 
 const Home = () => {
-  const [products, setProducts] = useLocalStorage("products", []);
+  let [products, setProducts] = useLocalStorage("products", []);
   const [categories, setCategories] = useState([]);
   const [showDetailslist, setShowDetailslist] = useState(false);
   const [togglePopular, setTogglePopular] = useState(true);
@@ -82,6 +83,12 @@ const Home = () => {
     console.log("test");
   }
 
+  function handleSortByLowestPrice(e) {
+    e.preventDefault();
+    console.log(products);
+    products = [...products].sort((a, b) => a.price - b.price);
+    setProducts(products);
+  }
 
   return (
     <section id="home">
@@ -94,13 +101,23 @@ const Home = () => {
         {!showDetailslist &&
           categories &&
           categories.map((category) => {
-            return <Category category={category} setProducts={setProducts} />;
+            return <Category key={uuidv4()} category={category} setProducts={setProducts} />;
           })}
       </article>
+
+      {showDetailslist && (
+        <div>
+          <p>Sort by:</p>
+          <a href="/home" onClick={handleSortByLowestPrice}>
+            Lowest Price
+          </a>
+        </div>
+      )}
+      {!showDetailslist && 
       <div className="popular">
         <h3>Popular</h3>
         <a
-          href="/"
+          href="/home"
           onClick={(e) => {
             if (togglePopular) {
               handleViewAllClick(e);
@@ -111,13 +128,13 @@ const Home = () => {
         >
           All Products
         </a>
-      </div>
+      </div>}
       <article className="allProducts">
         {products &&
           products.map((product) => {
             return (
-              <Link to={`/productDetails/${product.id}`}>
-                <ProductCard product={product} />
+              <Link key={uuidv4()} to={`/productDetails/${product.id}`}>
+                <ProductCard  key={uuidv4()} product={product} />
               </Link>
             );
           })}

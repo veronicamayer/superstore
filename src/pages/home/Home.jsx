@@ -116,7 +116,7 @@ const Home = () => {
         {products &&
           products.map((product) => {
             return (
-              <Link to={`/productDetails/${product.id}`}>
+              <Link to={`/productDetails/${product.id}`} className="productCardLink">
                 <ProductCard product={product} />
               </Link>
             );

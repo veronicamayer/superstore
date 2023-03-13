@@ -5,11 +5,27 @@ import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import * as React from 'react';
 
 import "./Home.scss";
 
+
+const useLocalStorage = (storageKey, fallbackState) => {
+  const [value, setValue] = React.useState(
+    JSON.parse(window.sessionStorage.getItem(storageKey)) ?? fallbackState
+  );
+
+  React.useEffect(() => {
+    window.sessionStorage.setItem(storageKey, JSON.stringify(value));
+    
+    
+  }, [value, storageKey]);
+
+  return [value, setValue];
+};
+
 const Home = () => {
-  let [products, setProducts] = useState([]);
+  const [products, setProducts] = useLocalStorage("products", []);
   const [categories, setCategories] = useState([]);
   const [showDetailslist, setShowDetailslist] = useState(false);
   const [togglePopular, setTogglePopular] = useState(true);
@@ -23,44 +39,25 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products?limit=10")
+    if (state) {
+      setProducts(state.products)
+      return
+    } 
+    if(products.length === 0){
+      fetch("https://dummyjson.com/products?limit=10")
       .then((res) => res.json())
       .then((products) => {
         console.log(products);
         return setProducts(products.products);
       })
       .catch((error) => console.error(error));
-  }, []);
 
-  function handleViewAllClick(e) {
-    e.preventDefault();
-    fetch("https://dummyjson.com/products?limit=100")
-      .then((res) => res.json())
-      .then((products) => setProducts(products.products))
-      .catch((error) => console.error(error));
-    document.querySelector("div .popular h3").innerHTML = "All Products";
-    document.querySelector("div .popular a").innerHTML = "Popular";
-    setTogglePopular(!togglePopular);
-    console.log(togglePopular);
-  }
-  function handlePopularClick(e) {
-    e.preventDefault();
-    fetch("https://dummyjson.com/products?limit=10")
-      .then((res) => res.json())
-      .then((products) => setProducts(products.products))
-      .catch((error) => console.error(error));
-    document.querySelector("div .popular h3").innerHTML = "Popular";
-    document.querySelector("div .popular a").innerHTML = "All Products";
-    setTogglePopular(!togglePopular);
-    console.log("test");
-  }
-  useEffect(() => {
-    if (state) return setProducts(state.products);
-    fetch("https://dummyjson.com/products?limit=10")
-      .then((res) => res.json())
-      .then((products) => setProducts(products.products))
-      .catch((error) => console.error(error));
-  }, []);
+    }
+  }, [state]);
+
+
+    
+
 
   function handleViewAllClick(e) {
     e.preventDefault();
@@ -85,12 +82,6 @@ const Home = () => {
     console.log("test");
   }
 
-  function handleSortByLowestPrice(e) {
-    e.preventDefault();
-    console.log(products);
-    products = products.sort((a, b) => a.price - b.price);
-    setProducts(products);
-  }
 
   return (
     <section id="home">
@@ -106,31 +97,21 @@ const Home = () => {
             return <Category category={category} setProducts={setProducts} />;
           })}
       </article>
-      {showDetailslist && (
-        <div>
-          <p>Sort by:</p>
-          <a href="" onClick={handleSortByLowestPrice}>
-            Lowest Price
-          </a>
-        </div>
-      )}
-      {!showDetailslist && (
-        <div className="popular">
-          <h3>Popular</h3>
-          <a
-            href="/"
-            onClick={(e) => {
-              if (togglePopular) {
-                handleViewAllClick(e);
-              } else {
-                handlePopularClick(e);
-              }
-            }}
-          >
-            All Products
-          </a>
-        </div>
-      )}
+      <div className="popular">
+        <h3>Popular</h3>
+        <a
+          href="/"
+          onClick={(e) => {
+            if (togglePopular) {
+              handleViewAllClick(e);
+            } else {
+              handlePopularClick(e);
+            }
+          }}
+        >
+          All Products
+        </a>
+      </div>
       <article className="allProducts">
         {products &&
           products.map((product) => {

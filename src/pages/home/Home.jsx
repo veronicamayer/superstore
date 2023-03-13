@@ -54,11 +54,7 @@ const Home = () => {
       .catch((error) => console.error(error));
 
     }
-  }, [state]);
-
-
-    
-
+  }, [state, setProducts, products.length]);
 
   function handleViewAllClick(e) {
     e.preventDefault();

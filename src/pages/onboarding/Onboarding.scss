@@ -1,0 +1,33 @@
+#onboarding {
+    position: relative;
+    text-align: center;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+
+    > img {
+        margin-top: 10vh;
+    }
+
+    h1 {
+        margin: 5vh auto 0 auto;
+        width: 70%;
+        color: #1f2126;
+    }
+
+    p {
+        margin: 2vh auto 10vh auto;
+        width: 70%;
+        color: #818894;
+    }
+
+    a {
+        background-color: #010c80;
+        color: white;
+        text-decoration: none;
+        padding: 10px 40px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}

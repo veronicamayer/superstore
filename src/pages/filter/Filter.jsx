@@ -42,7 +42,7 @@ const Filter = () => {
             products = filterBrands(products)
             products = filterPriceSpan(products)
             setProducts(products)
-            navigate("/",{ state: {products: products}});
+            navigate("/home",{ state: {products: products}});
         })
 
          

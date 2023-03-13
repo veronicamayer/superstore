@@ -20,7 +20,7 @@ const ProductDetails = () => {
       {products.images && (
         <div>
           <div className="headerProductDetails">
-            <Link to="/">
+            <Link to="/home">
               <img src={zurückButton} alt="zurückButton.png" />
             </Link>
             <p>{products.title}</p>

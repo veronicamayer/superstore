@@ -100,8 +100,8 @@ const Category = (props) => {
         .then((res) => res.json())
         .then((products) =>{
             console.log(products);
-/*             props.setProducts(products.products) */        
-            navigate("/home", { state: { products: products.products } });
+         props.setProducts(products.products)  
+            /* navigate("/home", { state: { products: products.products } }); */
             })
         .catch((error) => console.error(error));
     }

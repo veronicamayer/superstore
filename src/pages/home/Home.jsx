@@ -44,17 +44,7 @@ const Home = () => {
       setProducts(state.products)
       return
     } else {
-    if(products.length === 0){
-      fetch("https://dummyjson.com/products?limit=10")
-      .then((res) => res.json())
-      .then((products) => {
-        console.log(products);
-        return setProducts(products.products);
-      })
-      .catch((error) => console.error(error));
-
-    } 
-  }}, [state, setProducts, products.length]);
+  }}, [state]);
 
   function handleViewAllClick(e) {
     e.preventDefault();

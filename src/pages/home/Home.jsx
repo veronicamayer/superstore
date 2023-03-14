@@ -92,7 +92,7 @@ const Home = () => {
       </article>
 
       {showDetailslist && (
-        <div>
+        <div className="showDetailslist">
           <p>Sort by:</p>
           <a href="/home" onClick={handleSortByLowestPrice}>
             Lowest Price

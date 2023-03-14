@@ -40,6 +40,20 @@
             text-decoration: none;
         }
     }
+    .showDetailslist {
+        display: flex;
+        margin-bottom: 2vh;
+        font-weight: bold;
+      }
+      .showDetailslist a {
+        text-decoration: none;
+        margin-left: 5px;
+        color: blue;
+      }
+      .showDetailslist p {
+        opacity: 0.5;
+        margin-left: 10px;
+      }
 
     
 }

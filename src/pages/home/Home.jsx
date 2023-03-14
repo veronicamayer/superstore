@@ -42,9 +42,11 @@ const Home = () => {
   useEffect(() => {
     if (state && state.products.length > 0){
       setProducts(state.products)
+      state = null;
       return
     } else {
-  }}, [state]);
+      return
+  }}, [state, setProducts]);
 
   function handleViewAllClick(e) {
     e.preventDefault();

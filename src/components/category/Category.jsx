@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
 import './Category.scss';
-import { useNavigate } from "react-router-dom";
 
 /* images import */
 import smartphones from "../../images/smartphones.png";
@@ -92,7 +91,6 @@ const Category = (props) => {
             break;
     }
 
-    let navigate = useNavigate();
 
     function handleOnCklick(e) {
 
@@ -101,7 +99,6 @@ const Category = (props) => {
         .then((products) =>{
             console.log(products);
          props.setProducts(products.products)  
-            /* navigate("/home", { state: { products: products.products } }); */
             })
         .catch((error) => console.error(error));
     }

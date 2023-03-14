@@ -11,7 +11,7 @@ const ProductCard = (props) => {
           <img className="productImg" src={props.product.images[0]} alt="" />
         </div>
         <div>
-          <p>
+          <p className="reviews">
             <span>
               <img className="starImg" src={Star} alt="star.png" />
             </span>

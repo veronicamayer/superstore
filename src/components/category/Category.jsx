@@ -91,13 +91,15 @@ const Category = (props) => {
             break;
     }
 
+
     function handleOnCklick(e) {
+
         fetch(`https://dummyjson.com/products/category/${props.category}`)
         .then((res) => res.json())
         .then((products) =>{
             console.log(products);
-            props.setProducts(products.products)
-        })
+         props.setProducts(products.products)  
+            })
         .catch((error) => console.error(error));
     }
 

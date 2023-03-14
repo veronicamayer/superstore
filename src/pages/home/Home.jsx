@@ -42,19 +42,11 @@ const Home = () => {
   useEffect(() => {
     if (state && state.products.length > 0){
       setProducts(state.products)
+      state.products = [];
       return
     } else {
-    if(products.length === 0){
-      fetch("https://dummyjson.com/products?limit=10")
-      .then((res) => res.json())
-      .then((products) => {
-        console.log(products);
-        return setProducts(products.products);
-      })
-      .catch((error) => console.error(error));
-
-    } 
-  }}, [state, setProducts, products.length]);
+      return
+  }}, [state, setProducts]);
 
   function handleViewAllClick(e) {
     e.preventDefault();
@@ -102,7 +94,7 @@ const Home = () => {
       </article>
 
       {showDetailslist && (
-        <div>
+        <div className="showDetailslist">
           <p>Sort by:</p>
           <a href="/home" onClick={handleSortByLowestPrice}>
             Lowest Price
